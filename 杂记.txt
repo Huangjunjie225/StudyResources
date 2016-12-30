@@ -1,0 +1,492 @@
+
+更换jdk版本
+update-alternatives --install /usr/bin/java java /usr/java/jdk1.8.0_66/bin/java 300
+
+update-alternatives --install /usr/bin/javac javac /usr/java/jdk1.8.0_66/bin/javac 300
+
+update-alternatives --config java
+
+update-alternatives --config javac
+-------------------------------------------------------
+
+joshswget https://az764295.vo.msecnd.net/public/0.3.0/VSCode-linux-x64.zip
+
+wuminPC wuminWiFi
+
+
+wget http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/wxPython-src-2.8.12.1.tar.bz2/download
+
+wget http://downloads.sourceforge.net/project/comtypes/comtypes/0.6.2/comtypes-0.6.2.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fcomtypes%2Ffiles%2Fcomtypes%2F&ts=1343089066&use_mirror=nchc
+
+wget http://ulipad.googlecode.com/files/ulipad.4.1.zip
+
+安装完成MariaDB，首先启动MariaDB
+
+systemctl start mariadb
+设置开机启动
+
+systemctl enable mariadb
+
+
+mysql -uroot -p123456
+
+首先配置允许访问的用户，采用授权的方式给用户权限
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'IDENTIFIED BY '123456' WITH GRANT OPTION;
+如果没有"%"这个host值,就执行下面这两句:
+mysql> update user set host='%' where user='root';
+mysql> flush privileges;
+或者也可以执行：
+mysql>grand all privileges on  *.*  to root@'%'  identifies  by ' xxxx';
+其中 第一个*表示数据库名；第二个*表示该数据库的表名；如果像上面那样 *.*的话表示所有到数据库下到所有表都允许访问；
+‘%'：表示允许访问到mysql的ip地址；当然你也可以配置为具体到ip名称；%表示所有ip均可以访问；
+ 后面到‘xxxx'为root 用户的password；
+ 
+举例：
+任意主机以用户root和密码mypwd连接到mysql服务器
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'mypwd' WITH GRANT OPTION;
+mysql> flush privileges;
+IP为192.168.1.102的主机以用户myuser和密码mypwd连接到mysql服务器
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'192.168.1.102' IDENTIFIED BY 'mypwd' WITH GRANT OPTION; 
+mysql> flush privileges;
+
+
+
+service httpd start
+service mysqld start
+service php-fpm start
+
+方法一：
+      在附件终端中，进入到txt文件所在目录，使用命令符“iconv-f gb18030  -t utf8 1.txt -o 2.txt”把gb18030编码的1.txt转换成utf8的2.txt。这样2.txt就成为Linux支持的编码。
+ 
+方法二：
+      在附件终端中,使用命令符“gconf-editor”，进入环境配置，依次展开“/apps/gedit-2/preferences/encodings/”，编辑右侧的“auto_detected”将“gb18030”添加到最顶上。以后文本编辑器就可以正常显示中文了。
+
+挂载光盘
+mkdir /mnt/chrom/
+mount /dev/sr0 /mnt/chrom/ 挂载
+unmount /dev/sr0
+
+挂载U盘
+fdisk -l  查看U盘设备文件名
+mount -t vfat（fat32） /dev/sdb1（文件名） /mnt/usb/
+
+
+r w x 
+
+r read	读的权限
+w write 写的权限
+x 执行的权限
+
+
+
+aptitude 用于安装程序
+
+
+notepad	 	记事本
+calc		计算机
+chrome		谷歌
+ccleaner	ccleaner
+services.msc	计算机服务
+mstsc		远程连接
+
+
+		
+
+r	4
+w	2
+x	1
+
+d -:文件	d:文件夹
+
+chmod 773 workspace/
+
+touch 文件名	创建文件
+
+rm 文件名	删除文件
+
+tail -n 10 文件名	查看结尾的10行
+
+unzip 文件名
+
+
+python -m pdb [文件名.py]	进行单步调试
+pdb.set_trace()
+
+这个方法也是用pdb，但是不需要单步执行，我们只需要import pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点：
+运行代码，程序会自动在pdb.set_trace()暂停并进入pdb调试环境，可以用命令p查看变量，或者用命令c继续运行
+
+sh catalina.sh start nohup
+<Context path="/" docBase="AppCat" debug="0" privileged="true"></Context>
+
+wget https://pypi.python.org/packages/source/p/pip/pip-7.1.2.tar.gz#md5=3823d2343d9f3aaab21cf9c917710196  
+tar -xvf pip-7.1.2.tar.gz  
+cd pip-7.1.2  
+python setup.py install 
+pip install pyspider
+
+
+phantomjs
+sudo yum install gcc gcc-c++ make git openssl-devel freetype-devel fontconfig-devel 
+git clone git://github.com/ariya/phantomjs.git 
+cd phantomjs 
+git checkout 1.9 
+./build.sh
+或者
+1. 首先从官网http://phantomjs.org/下载phantomjs压缩包，解压缩到/root/phantomjs文件夹。
+2. 安装依赖
+sudo yum install fontconfig freetype libfreetype.so.6 libfontconfig.so.1 libstdc++.so.6
+3. 配置环境变量
+vi /etc/profile
+加入
+export PATH=$PATH:/root/phantomjs/bin
+PATH=$PATH:$HOME/bin
+export PATH
+这里要执行 source /etc/profile, 以另刚才的改动生效。
+4. 输入phantomjs --version
+
+
+安装Python-MySQL的module
+yum install MySQL-python -y 
+安装一些扩展库
+yum -y install rpm-build gcc-c++ mysql-devel python-devel
+安装MySQL的连接模块
+pip install mysql-connector
+
+
+（1） CTRL+Z停止进程并放入后台
+（2） jobs 显示当前暂停的进程
+（3） bg %N 使第N个任务在后台运行（%前有空格）
+（4） fg %N 使第N个任务在前台运行
+默认bg，fg不带%N时表示对最后一个进程操作！
+
+
+SELECT * FROM information_schema.INNODB_TRX\G;
+
+    Stack S;
+    BiTree temp;    
+    if(T == NULL) return;
+    InitStack(S);
+    temp = T;
+    while(temp != NULL && temp->lchild != NULL) {
+        Push(S,temp->lchild);
+        temp = temp->lchild;
+    }        
+    while(temp != NULL) {
+        visit(temp->data);
+        if(temp->rchild != NULL) {
+            temp = temp->rchild;
+            visit(temp->data);
+            while(temp != NULL && temp->lchild != NULL) {
+                Push(S,temp->lchild);
+                temp = temp->lchild;
+            }
+        } else if(StackEmpty(S) != TRUE) {
+            Pop(S,temp);
+        } else {
+            return; 
+        } 
+        
+    }
+
+	BiTree pr,p,temp;    
+	if(T == NULL) return;
+	p = PT;
+	while(p != NULL) {
+		p = p->lchild;
+	}
+	p = p->parent;
+	while(p != NULL) {
+		visit(p);
+		pr = p;
+		if(p->rchild != NULL) {
+			p = p->rchild;
+			while(p != NULL) {
+				p = p->lchild;
+			}
+			p = p->parent;
+
+		} else  {
+			do {
+				temp = p;	p = p->parent;
+				
+			} while(p != NULL & (p->rchild = temp || p->rchild == NULL))
+			if(p != NULL) p = p->rchild;
+		}
+	
+	}
+
+
+
+	TriTree c,pc;
+	if(PT == NULL) return;
+	c = PT;
+	while(c != NULL) {
+		if(c->lchild) {
+			c = c->lchild;
+		} else if(c->rchild) {
+			visit(c->data);		c = c->rchild;
+				
+		} else {
+			visit(c->data);
+			do {
+				pc = c;
+				c = c->parent;
+				if(c->rchild == NULL) visit(c->data);
+			} while(c!=NULL&&(c->lchild!=pc ||NULL == c->rchild));
+			if(c!=NULL) {
+				visit(c->data);
+				c = c->rchild;
+			}
+		}
+	}
+	
+int r=0,l=0;
+    if(T == NULL) return 0;
+    if(T->data == x){
+       r = Depthx(T->lchild,x);
+       l = Depthx(T->rchild,x);
+       return r>l?r+1:l+1;
+    } else {
+        Depthx(T->lchild,x);
+        Depthx(T->rchild,x);
+    }
+    return 1;
+
+
+
+
+Queue Q,temp;
+    QElemType q,p,r;
+    if(T == NULL) return TRUE;
+    InitQueue(Q);
+    InitQueue(temp);
+    q = T;
+    if(q->lchild == NULL && q->rchild == NULL) return TRUE;
+    if(q->lchild == NULL && q->rchild != NULL) return FALSE;
+    if(q->lchild != NULL)  EnQueue(Q,q->lchild);
+    if(q->rchild != NULL)  EnQueue(Q,q->rchild);
+    while(!QueueEmpty(Q)||!QueueEmpty(temp)) {
+        if(!QueueEmpty(Q)) {
+            while(!QueueEmpty(Q)) {
+                DeQueue(Q,q);
+                if(q->lchild == NULL && q->rchild !=NULL) return FALSE;
+                if(!QueueEmpty(Q) && q->lchild == NULL && q->rchild == NULL && GetHead(Q,p))
+                {                    
+                    if(p->rchild != NULL || p->lchild != NULL) {
+                        return FALSE;
+                    }
+                    if(!QueueEmpty(temp)) 
+                    {
+                        GetHead(temp,r);
+                        if(r->rchild != NULL || r->lchild != NULL) return FALSE;
+                    }    
+                }   
+                if(q->lchild != NULL)  EnQueue(temp,q->lchild);
+                if(q->rchild != NULL)  EnQueue(temp,q->rchild);
+            
+            }
+        }
+        else {
+            while(!QueueEmpty(temp)) {
+                DeQueue(temp,q);
+                if(q->lchild == NULL && q->rchild !=NULL) return FALSE;
+                if(!QueueEmpty(temp)&&q->lchild == NULL && q->rchild == NULL && GetHead(temp,p))
+                {
+                    if(p->rchild != NULL || p->lchild != NULL) {
+                        return FALSE;
+                    }
+                    if(!QueueEmpty(Q))
+                    {
+                        GetHead(Q,r);
+                        if(r->rchild != NULL || r->lchild != NULL) return FALSE;
+                    } 
+                } 
+                if(q->lchild != NULL)  EnQueue(Q,q->lchild);
+                if(q->rchild != NULL)  EnQueue(Q,q->rchild);
+            }
+        }
+    }
+    return TRUE;
+
+
+
+
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+# Created on 2016-03-25 00:59:45
+# Project: taobaomm
+ 
+from pyspider.libs.base_handler import *
+ 
+PAGE_START = 1
+PAGE_END = 30
+DIR_PATH = '/var/py/mm'
+ 
+ 
+class Handler(BaseHandler):
+    crawl_config = {
+    }
+ 
+    def __init__(self):
+        self.base_url = 'https://mm.taobao.com/json/request_top_list.htm?page='
+        self.page_num = PAGE_START
+        self.total_num = PAGE_END
+        self.deal = Deal()
+ 
+    def on_start(self):
+        while self.page_num <= self.total_num:
+            url = self.base_url + str(self.page_num)
+            self.crawl(url, callback=self.index_page)
+            self.page_num += 1
+ 
+    def index_page(self, response):
+        for each in response.doc('.lady-name').items():
+            self.crawl(each.attr.href, callback=self.detail_page, fetch_type='js')
+ 
+    def detail_page(self, response):
+        domain = response.doc('.mm-p-domain-info li > span').text()
+        if domain:
+            page_url = 'https:' + domain
+            self.crawl(page_url, callback=self.domain_page)
+ 
+    def domain_page(self, response):
+        name = response.doc('.mm-p-model-info-left-top dd > a').text()
+        dir_path = self.deal.mkDir(name)
+        brief = response.doc('.mm-aixiu-content').text()
+        if dir_path:
+            imgs = response.doc('.mm-aixiu-content img').items()
+            count = 1
+            self.deal.saveBrief(brief, dir_path, name)
+            for img in imgs:
+                url = img.attr.src
+                if url:
+                    extension = self.deal.getExtension(url)
+                    file_name = name + str(count) + '.' + extension
+                    count += 1
+                    self.crawl(img.attr.src, callback=self.save_img,
+                               save={'dir_path': dir_path, 'file_name': file_name})
+ 
+    def save_img(self, response):
+        content = response.content
+        dir_path = response.save['dir_path']
+        file_name = response.save['file_name']
+        file_path = dir_path + '/' + file_name
+        self.deal.saveImg(content, file_path)
+ 
+ 
+import os
+ 
+class Deal:
+    def __init__(self):
+        self.path = DIR_PATH
+        if not self.path.endswith('/'):
+            self.path = self.path + '/'
+        if not os.path.exists(self.path):
+            os.makedirs(self.path)
+ 
+    def mkDir(self, path):
+        path = path.strip()
+        dir_path = self.path + path
+        exists = os.path.exists(dir_path)
+        if not exists:
+            os.makedirs(dir_path)
+            return dir_path
+        else:
+            return dir_path
+ 
+    def saveImg(self, content, path):
+        f = open(path, 'wb')
+        f.write(content)
+        f.close()
+ 
+    def saveBrief(self, content, dir_path, name):
+        file_name = dir_path + "/" + name + ".txt"
+        f = open(file_name, "w+")
+        f.write(content.encode('utf-8'))
+ 
+    def getExtension(self, url):
+        extension = url.split('.')[-1]
+        return extension
+
+
+
+version=0.0.1-SNAPSHOT
+groupId=com.nome
+m2e.projectName=AppCat
+m2e.projectLocation=D\:\\app-cat\\back_end
+artifactId=AppCat
+
+
+
+
+
+post/newSeePost?clazzId=7692d27cb154440989998cf923898d78&lastUpdate=2016-03-26%2013:21:14&status=1&start=1&limit=10
+
+
+
+<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${spring.redis.pool.max-idle}" />
+        <property name="maxTotal" value="${spring.redis.pool.max-active}" />
+        <property name="maxWaitMillis" value="${spring.redis.pool.max-wait}" />
+        <property name="testOnBorrow" value="${spring.redis.testOnBorrow}" />
+    </bean>
+
+	<context:annotation-config />
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	
+	<!--  
+	<bean id="connectionFactory" 
+    class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
+     p:host-name="${spring.redis.host}" p:port="${spring.redis.port}" p:password="${spring.redis.pass}"
+        p:pool-config-ref="poolConfig"/>
+     -->  
+     
+    <bean id="stringSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+
+	<!-- 开启事务，可以通过transcational注解控制 -->
+	<!-- 
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="keySerializer" ref="stringSerializer" />
+        <property name="enableTransactionSupport" value="true" />
+    </bean>
+     -->
+    
+    <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool" destroy-method="destroy">
+        <constructor-arg ref="jedisPoolConfig"/> 
+        <constructor-arg>
+            <list> 
+            <bean class="redis.clients.jedis.JedisShardInfo"> 
+                <constructor-arg index="0" value="139.199.164.176"/>
+                <constructor-arg index="1" value="6381"/>
+                <constructor-arg index="2" value="instance:01"/>
+            </bean>
+            <bean class="redis.clients.jedis.JedisShardInfo">
+                <constructor-arg index="0" value="139.199.164.176"/>
+                <constructor-arg index="1" value="6380"/>
+                <constructor-arg index="2" value="instance:02"/>
+            </bean> 
+            <bean class="redis.clients.jedis.JedisShardInfo">
+                <constructor-arg index="0" value="139.199.164.176"/>
+                <constructor-arg index="1" value="6379"/>
+                <constructor-arg index="2" value="instance:03"/>
+            </bean>
+            </list>
+        </constructor-arg>
+   </bean>
+        
+     <!--java帮我们同步sentinel的信息，将主从信息同步到客户端来-->
+   <bean class="redis.clients.jedis.JedisSentinelPool">
+        <constructor-arg index="0" value="mymaster"/>
+        <constructor-arg index="1">
+            <set>
+                <value>139.199.164.176:26379</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg index="2" ref="jedisPoolConfig"/>
+    </bean>
+    
+    <!-- 
+    	<bean id="stringRedisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate" p:connection-factory-ref="connectionFactory"/>
+	-->
+
